@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie Clicker</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    
+    <h1>Cookie Clicker</h1>
+    <div class="scoreScreen">
+        <span id="input"></span>
+    </div>
+    <div class="gameScreen">
+
+        <div class="cookieScreen" id="cookie">
+            <div class="cookie">
+                <button id="cookie">
+                    <img src="Assets/CookieImg.png" alt="cookie">
+                </button>
+            </div>
+        </div>
+
+        <div class="btnContainer">
+            <button class="upgradeClick" id="upgradeClick">Upgrade Clicker</button>
+            <button class="upgradeAutoBaker" id="upgradeAutoBaker">Auto Baker</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

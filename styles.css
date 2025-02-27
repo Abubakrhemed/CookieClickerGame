@@ -1,0 +1,34 @@
+body{
+    background-color: rgb(50, 50, 120);
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+.gameScreen{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    justify-items: center;
+    gap: 200px;
+
+}
+
+.cookieScreen{
+    
+}
+
+.cookie{}
+
+.cookie button{
+    
+}
+
+#cookie img{
+
+}
+
+.scoreScreen{}
+
+.scoreScreen span{}
