@@ -43,7 +43,7 @@ h1{
     height: 250px;
 }
 
-.Active Button{
+.activebtn{
     width: 300px;
     height: 300px;
 }
@@ -53,7 +53,15 @@ h1{
     height: 270px;
 }
 
-.scoreScreen{}
+.scoreScreen  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreScreen h1{
+    margin-right: 40px;
+}
 
 .scoreScreen span{}
 
@@ -122,4 +130,17 @@ footer a:visited{
 footer svg{
     height: 30px;
  
+}
+
+#cookieCount{
+    font-size: 1.3rem;
+    color: white;
+}
+
+#unavailable{
+    cursor: none;
+}
+
+#hidden{
+    display:none;
 }
