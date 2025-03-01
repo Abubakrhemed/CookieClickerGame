@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h1>Cookie Clicker</h1>
-    <div class="scoreScreen">
-        <h1>Score</h1>
-        <span id="cookieCount"></span>
-    </div>
+
     <div class="gameScreen">
 
         <div class="cookieScreen">
+                <h1>Cookie Clicker</h1>
+                <div class="scoreScreen">
+                    <span id="cookieCount"></span>
+                    <h1>Cookies</h1>
+                </div>
             <div class="cookie">
                 <button id="cookie">
                     <img src="Assets/CookieImg.png" alt="cookie">
@@ -23,8 +24,14 @@
         </div>
 
         <div class="btnContainer">
-            <button class="upgradeClick" id="upgradeClick">Upgrade Clicker |
-                <span>Level <span id="clickLevel"></span></span>
+            <button class="upgradeClick" id="upgradeClick">
+                <div style="display: flex; justify-content: center;align-items: center; height: 30px;">
+                    <img src="./Assets/cursor_PNG78.png" alt="">
+                    <p>Upgrade Clicker</p>
+                    <div><span>Level <span id="clickLevel"></span></span></div>
+                </div>
+            <div><span>requires Level<span id="clickNextLevel"></span></span></div>
+
             </button>
             <button class="upgradeAutoBaker" id="upgradeAutoBaker">Auto Baker |
                 <span>Level <span id="bakerLevel"></span></span>

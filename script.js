@@ -6,15 +6,17 @@ const upgradeBacker = document.querySelector("#upgradeAutoBaker");
 const score = document.querySelector("#cookieCount");
 const clickerLevel = document.querySelector("#clickLevel")
 const bakerLevel = document.querySelector("#bakerLevel");
-
+const clickNextLevel = document.querySelector("#clickNextLevel")
 
 
 let sum = 0;
 let currentClicks = 0;
 let autofarm = 0
+let upgradeCursorLevel = 5;
+let currentClickLevel = 0;
 score.textContent = sum;
-let upgradeLevel = 5;
-
+clickerLevel.textContent = currentClickLevel;
+clickNextLevel.textContent = upgradeCursorLevel
 /*
 cookieClicked.addEventListener("click",() => {
   sum += 1;
@@ -37,24 +39,26 @@ function cookieClicks (){
 function upgradeClick (){
   upgradeClicker.addEventListener("click",() => {
     currentClicks = 10
-    setTimeout(() => {
-      upgradeClicker.style.backgroundColor = "";
-      upgradeClicker.style.cursor = "";
-    }, 1000); 
+    clickLevel()
   })
+}
+
+function clickLevel (){
+  currentClickLevel++;
+  clickerLevel.textContent = currentClickLevel;
 }
 
 upgradeClicker.style.backgroundColor = "rgba(236, 236, 236, 0.852)";
 upgradeClicker.style.cursor = "none";
 
 function checkScore(){
-  if (sum < upgradeLevel){
+  if (sum < upgradeCursorLevel){
   }else{
     upgradeClicker.style.backgroundColor = "";
     upgradeClicker.style.cursor = "";
     upgradeClicker.classList.remove("hidden")
-    upgradeClick()
   }
 }
 
+upgradeClick()
 cookieClicks()

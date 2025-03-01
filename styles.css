@@ -14,14 +14,12 @@ h1{
     grid-template-columns: repeat(2,2fr);
     justify-items: center;
     gap: 100px;
+    width: 100vw;
+    height: 100vh;
 
 }
 
-.cookieScreen{
-    
-}
 
-.cookie{}
 
 .cookie button{
     display: flex;
@@ -57,6 +55,8 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.311);
+ 
 }
 
 .scoreScreen h1{
@@ -67,7 +67,7 @@ h1{
 
 
 .btnContainer{
-    background-color: white;
+    background-color: rgb(130, 196, 224);
     display: grid;
     grid-template-columns: repeat(1,1fr);
     width: 100%;
@@ -79,12 +79,16 @@ h1{
 .upgradeClick,
 .upgradeAutoBaker{
     overflow: auto;
-    width: 360px;
-    height: 40px;
+    width: 400px;
+    height: 80px;
     border-radius: 9px;
     border: 1px solid black;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    justify-content: center;
+    align-items: center;
 }
 
 .upgradeClick:hover,
@@ -95,9 +99,19 @@ h1{
 .upgradeClick{
     background-color: bisque;
 }
-
+.upgradeClick div{
+    margin-left: 30px;
+}
+.upgradeClick img{
+    width: 30px;
+    height: auto;
+}
 .upgradeAutoBaker{
     background-color: rgb(163, 125, 78);
+}
+
+#clickNextLevel{
+    margin-left: 10px;
 }
 
 footer{
@@ -133,8 +147,10 @@ footer svg{
 }
 
 #cookieCount{
-    font-size: 1.3rem;
+    font-size: 2.3rem;
     color: white;
+    font-weight: 700;
+    margin-right: 40px;
 }
 
 #unavailable{
