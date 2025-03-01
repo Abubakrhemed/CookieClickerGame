@@ -8,26 +8,20 @@ const clickerLevel = document.querySelector("#clickLevel")
 const bakerLevel = document.querySelector("#bakerLevel");
 const clickNextLevel = document.querySelector("#clickNextLevel")
 
-
+//Game varibales 
 let sum = 0;
 let currentClicks = 0;
 let autofarm = 0
 let upgradeCursorLevel = 5;
 let currentClickLevel = 0;
+
+//text content for scores and levels
 score.textContent = sum;
 clickerLevel.textContent = currentClickLevel;
 clickNextLevel.textContent = upgradeCursorLevel
-/*
-cookieClicked.addEventListener("click",() => {
-  sum += 1;
-  score.textContent= sum
-})
 
-upgradeClicker.addEventListener("click", () => {
-   
-})
-*/
 
+// when cookie is clicked
 function cookieClicks (){
   cookieClicked.addEventListener("click" , () => {
     sum += currentClicks + 1;
@@ -36,6 +30,7 @@ function cookieClicks (){
   })
 }
 
+//when upgrade clicker is clicked
 function upgradeClick (){
   upgradeClicker.addEventListener("click",() => {
     currentClicks = 10
@@ -43,14 +38,17 @@ function upgradeClick (){
   })
 }
 
+//updates text content of upgrade click level
 function clickLevel (){
   currentClickLevel++;
   clickerLevel.textContent = currentClickLevel;
 }
 
+//set upgradeclick to be disabled first 
 upgradeClicker.style.backgroundColor = "rgba(236, 236, 236, 0.852)";
 upgradeClicker.style.cursor = "none";
 
+//check the score and activate upgrade click based off score 
 function checkScore(){
   if (sum < upgradeCursorLevel){
   }else{
@@ -60,5 +58,7 @@ function checkScore(){
   }
 }
 
+
+//function calls
 upgradeClick()
 cookieClicks()
