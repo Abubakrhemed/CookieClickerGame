@@ -33,7 +33,7 @@ function cookieClicks (){
 //when upgrade clicker is clicked
 function upgradeClick (){
   upgradeClicker.addEventListener("click",() => {
-    currentClicks = 10
+    currentClicks = 5
     clickLevel()
   })
 }
@@ -44,17 +44,18 @@ function clickLevel (){
   clickerLevel.textContent = currentClickLevel;
 }
 
-//set upgradeclick to be disabled first 
-upgradeClicker.style.backgroundColor = "rgba(236, 236, 236, 0.852)";
-upgradeClicker.style.cursor = "none";
+// Set upgradeClicker to be disabled initially
+upgradeClicker.style.backgroundColor = "rgba(59, 59, 59, 0.53)";
+upgradeClicker.disabled = true; // Disables the button
 
-//check the score and activate upgrade click based off score 
-function checkScore(){
-  if (sum < upgradeCursorLevel){
-  }else{
-    upgradeClicker.style.backgroundColor = "";
-    upgradeClicker.style.cursor = "";
-    upgradeClicker.classList.remove("hidden")
+// Check the score and activate upgrade click based on score
+function checkScore() {
+  if (sum < upgradeCursorLevel) {
+  } else {
+    upgradeClicker.style.backgroundColor = ""; 
+    upgradeClicker.style.cursor = "pointer";
+    upgradeClicker.disabled = false; 
+    clickNextLevel.style.color = "rgba(25, 210, 62, 0.53)"
   }
 }
 
