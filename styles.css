@@ -1,163 +1,143 @@
-body{
-    background-color: rgb(50, 50, 120);
-    margin: 0px;
-    padding: 0px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1{
-    color: white;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Game Container */
+.gameScreen {
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.gameScreen{
-    display: grid;
-    grid-template-columns: repeat(2,2fr);
-    justify-items: center;
-    gap: 100px;
-    width: 100vw;
-    height: 100vh;
-
+/* Title */
+h1 {
+    font-size: 2.5rem;
+    color: #5c3d00;
+    margin-bottom: 20px;
 }
 
+/* Cookie counter */
+.scoreScreen {
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
 
+#cookieCount {
+    font-weight: bold;
+    font-size: 2.2rem;
+    color: #b45f06;
+}
 
-.cookie button{
-    display: flex;
-    background-color: transparent;
-    justify-content: center;
-    align-items: center;
+/* Cookie Button */
+.cookie button {
+    background: none;
     border: none;
-    width: 270px;
-    height: 270px;
-    border-radius: 360%;
-}
-
-.cookie button:hover{
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-#cookie img{
-    width: 250px;
-    height: 250px;
+.cookie button:hover {
+    transform: scale(1.05);
 }
 
-.activebtn{
-    width: 300px;
-    height: 300px;
+.cookie img {
+    width: 150px;
+    height: 150px;
 }
 
-.cimgActive {
-    width: 270px;
-    height: 270px;
-}
-
-.scoreScreen  {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.311);
- 
-}
-
-.scoreScreen h1{
-    margin-right: 40px;
-}
-
-.scoreScreen span{}
-
-
-.btnContainer{
-    background-color: rgb(130, 196, 224);
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-    width: 100%;
-    height: 100%;
-    justify-items: center;
-    align-items: center;
+/* Upgrade Buttons */
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .upgradeClick,
-.upgradeAutoBaker{
-    overflow: auto;
-    width: 400px;
-    height: 80px;
-    border-radius: 9px;
-    border: 1px solid black;
-    font-size: 1.2rem;
-    font-weight: 600;
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-    justify-content: center;
-    align-items: center;
-    background-color: bisque;
+.upgradeAutoBaker {
+    background-color: #ffce54;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 20px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .upgradeClick:hover,
 .upgradeAutoBaker:hover {
-    cursor: pointer;
-}
-
-.upgradeClick div,
-.upgradeAutoBaker div{
-    margin-left: 30px;
+    background-color: #f6b93b;
+    transform: translateY(-2px);
 }
 
 .upgradeClick img,
-.upgradeAutoBaker img{
+.upgradeAutoBaker img {
     width: 30px;
-    height: auto;
-}
-
-
-#clickNextLevel,
-#bakerNextLevel{
-    margin-left: 10px;
-    color: red;
-}
-
-footer{
-    position: fixed;
-    bottom: 0px;
-    height: 50px;
-    display: flex;
-    background-color: white;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-footer h1{
-    color: black;
-    margin-right: 150px;
-}
-
-footer a{
- color: rgb(77, 83, 162);
- font-size: 1.5rem;
- text-decoration: none;
-}
-
-footer a:visited{
-    color: rgb(207, 43, 207);
-}
-
-footer svg{
     height: 30px;
- 
+    margin-right: 10px;
 }
 
-#cookieCount{
-    font-size: 2.3rem;
-    color: white;
-    font-weight: 700;
-    margin-right: 40px;
+.upgradeClick div,
+.upgradeAutoBaker div {
+    text-align: center;
 }
 
-#unavailable{
-    cursor: none;
+/* Footer */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-#hidden{
-    display:none;
+footer h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+footer a {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #5c3d00;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #b45f06;
+}
+
+footer svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    fill: currentColor;
 }

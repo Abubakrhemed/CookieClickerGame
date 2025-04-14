@@ -1,5 +1,6 @@
 console.log("scripts loaded");
-// declare varibales for later usage
+
+// Declare DOM elements
 const cookieClicked = document.querySelector("#cookie");
 const upgradeClicker = document.querySelector("#upgradeClick");
 const upgradeBacker = document.querySelector("#upgradeAutoBaker");
@@ -9,102 +10,104 @@ const bakerLevel = document.querySelector("#bakerLevel");
 const clickNextLevel = document.querySelector("#clickNextLevel");
 const farmNextLevel = document.querySelector("#bakerNextLevel");
 
-
-//Game varibales 
+// Game variables
 let totalCookies = 0;
 
-//cursor click varibales 
-let currentClicks = 0;
-let upgradeCursorLevel = 5;
+// Click upgrade system
+let currentClicks = [1, 2, 4, 5, 6, 7, 8, 10, 15, 20, 24];
+let upgradeCursorLevel = [5, 10, 20, 45, 100, 300, 450];
 let currentClickLevel = 1;
 
-//autofarm varibales
-let autofarm = 0
-let upgradeautofarmLevel = 20;
+// Autofarm system using arrays now
+let autoFarmValues = [0, 2, 4, 6, 8, 10, 12]; // cookies per 5 sec
+let upgradeAutoFarmLevels = [20, 50, 100, 200, 400];
 let currentFarmLevel = 0;
-let isAutoFarmRunning = false; 
+let isAutoFarmRunning = false;
 
-//text content for scores and levels
+// Initialize display
 cookieScreen.textContent = totalCookies;
 clickerLevel.textContent = currentClickLevel;
-clickNextLevel.textContent = upgradeCursorLevel;
+clickNextLevel.textContent = upgradeCursorLevel[0] ?? "MAX";
 bakerLevel.textContent = currentFarmLevel;
-farmNextLevel.textContent = upgradeautofarmLevel;
+farmNextLevel.textContent = upgradeAutoFarmLevels[0] ?? "MAX";
 
+// Cookie click
+cookieClicked.addEventListener("click", () => {
+  totalCookies += currentClicks[0];
+  cookieScreen.textContent = totalCookies;
+  checkScore();
+});
 
-// when cookie is clicked
-function cookieClicks() {
-  cookieClicked.addEventListener("click", () => {
-    totalCookies += currentClicks + 1;
-   cookieScreen.textContent = totalCookies;
+// Upgrade clicker
+upgradeClicker.addEventListener("click", () => {
+  if (totalCookies >= upgradeCursorLevel[0]) {
+    totalCookies -= upgradeCursorLevel[0];
+    currentClickLevel++;
+
+    // Remove used values
+    currentClicks.shift();
+    upgradeCursorLevel.shift();
+
+    // Update UI
+    cookieScreen.textContent = totalCookies;
+    clickerLevel.textContent = currentClickLevel;
+    clickNextLevel.textContent = upgradeCursorLevel[0] ?? "MAX";
+
     checkScore();
-  })
-}
+  }
+});
 
-//when upgrade clicker is clicked
-function upgradeClick() {
-  upgradeClicker.addEventListener("click", () => {
-    currentClicks = 5;
-    clickLevel();
-  })
-}
+// Upgrade farm
+upgradeBacker.addEventListener("click", () => {
+  if (totalCookies >= upgradeAutoFarmLevels[0]) {
+    totalCookies -= upgradeAutoFarmLevels[0];
+    currentFarmLevel++;
 
-//updates text content of upgrade click level
-function clickLevel() {
-  currentClickLevel++;
-  clickerLevel.textContent = currentClickLevel;
-}
+    autoFarmValues.shift();
+    upgradeAutoFarmLevels.shift();
 
+    // Update UI
+    bakerLevel.textContent = currentFarmLevel;
+    farmNextLevel.textContent = upgradeAutoFarmLevels[0] ?? "MAX";
+    cookieScreen.textContent = totalCookies;
 
-function upgradeFarm() {
-  upgradeBacker.addEventListener("click", () => {
-    farmLevel()
     if (!isAutoFarmRunning) {
       isAutoFarmRunning = true;
 
       setInterval(() => {
-        let earnedCookies = autofarm + 2; 
-        totalCookies += earnedCookies; 
-        cookieScreen.textContent = totalCookies; 
-       
+        let earnedCookies = autoFarmValues[0];
+        totalCookies += earnedCookies;
+        cookieScreen.textContent = totalCookies;
+        checkScore();
       }, 5000);
     }
-  });
-}
+  }
+});
 
-function farmLevel(){
-  currentFarmLevel++
-  bakerLevel.textContent = currentFarmLevel;
-}
-
-
-// Set upgradeClicker to be disabled initially
-upgradeClicker.style.backgroundColor = "rgba(59, 59, 59, 0.53)";
-upgradeClicker.disabled = true; 
-upgradeBacker.style.backgroundColor = "rgba(59, 59, 59, 0.53)";
-upgradeBacker.disabled = true; 
-
-// Check the cookieScreen and activate upgrade click based on cookieScreen
+// Check score to enable buttons
 function checkScore() {
-  if (totalCookies < upgradeCursorLevel) {
-  } else {
+  if (upgradeCursorLevel.length && totalCookies >= upgradeCursorLevel[0]) {
+    upgradeClicker.disabled = false;
     upgradeClicker.style.backgroundColor = "";
     upgradeClicker.style.cursor = "pointer";
-    upgradeClicker.disabled = false;
     clickNextLevel.style.color = "rgba(25, 210, 62, 0.53)";
+  } else {
+    upgradeClicker.disabled = true;
+    upgradeClicker.style.backgroundColor = "rgba(59, 59, 59, 0.53)";
+    clickNextLevel.style.color = "";
   }
 
-  if (totalCookies < upgradeautofarmLevel){
-
-  }else{
+  if (upgradeAutoFarmLevels.length && totalCookies >= upgradeAutoFarmLevels[0]) {
+    upgradeBacker.disabled = false;
     upgradeBacker.style.backgroundColor = "";
     upgradeBacker.style.cursor = "pointer";
-    upgradeBacker.disabled = false;
     farmNextLevel.style.color = "rgba(25, 210, 62, 0.53)";
+  } else {
+    upgradeBacker.disabled = true;
+    upgradeBacker.style.backgroundColor = "rgba(59, 59, 59, 0.53)";
+    farmNextLevel.style.color = "";
   }
 }
 
-//function calls
-upgradeClick();
-cookieClicks();
-upgradeFarm();
+// Initial check
+checkScore();
