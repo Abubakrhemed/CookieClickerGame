@@ -9,6 +9,8 @@ const clickerLevel = document.querySelector("#clickLevel");
 const bakerLevel = document.querySelector("#bakerLevel");
 const clickNextLevel = document.querySelector("#clickNextLevel");
 const farmNextLevel = document.querySelector("#bakerNextLevel");
+const clickgain = document.querySelector("#clickGain")
+const bakergain = document.querySelector("#bakerGain")
 
 // Game variables
 let totalCookies = 0;
@@ -30,6 +32,8 @@ clickerLevel.textContent = currentClickLevel;
 clickNextLevel.textContent = upgradeCursorLevel[0] ?? "MAX";
 bakerLevel.textContent = currentFarmLevel;
 farmNextLevel.textContent = upgradeAutoFarmLevels[0] ?? "MAX";
+clickgain.textContent = currentClicks[0]
+bakergain.textContent = autoFarmValues[0]
 
 // Cookie click
 cookieClicked.addEventListener("click", () => {
@@ -52,6 +56,7 @@ upgradeClicker.addEventListener("click", () => {
     cookieScreen.textContent = totalCookies;
     clickerLevel.textContent = currentClickLevel;
     clickNextLevel.textContent = upgradeCursorLevel[0] ?? "MAX";
+    clickgain.textContent = currentClicks[0]
 
     checkScore();
   }
@@ -78,9 +83,11 @@ upgradeBacker.addEventListener("click", () => {
         let earnedCookies = autoFarmValues[0];
         totalCookies += earnedCookies;
         cookieScreen.textContent = totalCookies;
-        checkScore();
+        bakergain.textContent = autoFarmValues[0]
       }, 5000);
     }
+    bakergain.textContent = autoFarmValues[0]
+    checkScore();
   }
 });
 
