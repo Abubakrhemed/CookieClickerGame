@@ -12,17 +12,18 @@ const bakergain = document.querySelector("#bakerGain")
 
 
 // Game variables
-let totalCookies = 0;
+let totalCookies = 100000;
 
 
 // Click upgrade system
 let currentClicks = [1, 2, 4, 5, 6, 7, 8, 10, 15, 20, 24,50,90,100
   ,113,135,256,300,250,500,570,600,700,800,870,950
-  ,1000,2000,3000];
+  ,1000,2000,3000 , 3150, 3200, 3300 ,4000 ,4500 , 4700 , 5000];
 let upgradeCursorLevel = [
   5, 10, 25, 50, 100, 150, 200, 275, 350, 450, 600,
   800, 1100, 1400, 1800, 2200, 2800, 3500, 4200, 5000,
-  6000, 7200, 8500, 10000, 11500, 13000, 15000, 20000, 30000
+  6000, 7200, 8500, 10000, 11500, 13000, 15000, 20000, 30000, 40000, 50000
+  , 75000, 100000, 125000, 150000, 200000
 ];
 let currentClickLevel = 1;
 
@@ -30,12 +31,14 @@ let currentClickLevel = 1;
 let autoFarmValues = [
   0, 2, 4, 6, 8, 10, 12, 15, 18, 22, 25,
   30, 36, 42, 50, 60, 75, 90, 110, 130,
-  150, 175, 200, 250, 300, 400, 500, 650, 800
+  150, 175, 200, 250, 300, 400, 500, 650, 800,
+  1000 , 1450 , 1700, 2400 , 2700 , 3450 , 4500
 ];
 let upgradeAutoFarmLevels = [
   20, 50, 100, 200, 350, 500, 700, 950, 1300, 1700, 2100,
   2600, 3200, 3900, 4700, 5600, 6700, 7900, 9200, 11000,
-  13000, 15500, 18000, 21000, 25000, 30000, 36000, 43000, 50000
+  13000, 15500, 18000, 21000, 25000, 30000, 36000, 43000, 50000,
+  100000 , 134000 , 150000 , 200000 , 250000 , 289000 , 350000
 ];
 let currentFarmLevel = 0;
 let isAutoFarmRunning = false;
@@ -54,7 +57,7 @@ bakergain.textContent = autoFarmValues[0]
 // Cookie click
 cookieClicked.addEventListener("click", () => {
   totalCookies += currentClicks[0];
-  cookieScreen.textContent = totalCookies;
+  cookieScreen.textContent = formatCookies(totalCookies);
   checkScore();
 });
 
@@ -140,7 +143,6 @@ function formatCookies(num) {
     return (num / 1_000_000_000_000).toFixed(2).replace(/\.0+$/, '') + "T"; // e.g., 1.25T
   }
 }
-
 
 
 // Check score to enable buttons
