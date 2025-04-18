@@ -12,7 +12,7 @@ const bakergain = document.querySelector("#bakerGain")
 
 
 // Game variables
-let totalCookies = 100000;
+let totalCookies = 0;
 
 
 // Click upgrade system
